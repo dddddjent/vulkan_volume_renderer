@@ -19,7 +19,7 @@ xmake build
 ## Assets
 
 - Download assets from github release
-- Move assets to the path specified in proj/static_render/assets
+- Move assets to proj/static_render/assets
 
 ## Run
 
