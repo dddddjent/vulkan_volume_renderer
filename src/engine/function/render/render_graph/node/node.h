@@ -1,0 +1,6 @@
+#include "./default_object/node.h"
+#include "./field/node.h"
+#include "./fire_object/node.h"
+#include "./hdr_to_sdr/node.h"
+#include "./recorder/node.h"
+#include "./ui/node.h"

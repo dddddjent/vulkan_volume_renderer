@@ -1,0 +1,391 @@
+{
+    "name": "Simulator",
+    "engine_directory": "../../src/engine",
+    "logger": {
+        "level": "debug",
+        "output": "logs/log.txt"
+    },
+    "width": 1400,
+    "height": 900,
+    "camera": {
+        "position": [
+            4.893,
+            3.188,
+            -13.299
+        ],
+        "view": [
+            0,
+            0.0,
+            1.0
+        ],
+        "fov": 60.0,
+        "move_speed": 4
+    },
+    "render_graph": "fire",
+    "objects": [
+        {
+            "name": "sphere",
+            "mesh": "sphere1",
+            "material": "terrain"
+        },
+        {
+            "name": "cube1",
+            "mesh": "cube1",
+            "material": "cube"
+        },
+        {
+            "name": "plane1",
+            "mesh": "plane1",
+            "material": "plane"
+        },
+        {
+            "name": "terrain",
+            "mesh": "terrain",
+            "material": "terrain"
+        },
+        {
+            "name": "plane2",
+            "mesh": "plane2",
+            "material": "plane"
+        }
+    ],
+    "fields": {
+        "step": 0.01,
+        "fire_configuration": {
+            "light_sample_dim": [
+                4,
+                8,
+                4
+            ],
+            "light_sample_avg_region": [
+                7,
+                8,
+                7
+            ],
+            "light_sample_gain": 0.05,
+            "self_illumination_lights": [
+                [
+                    0.5,
+                    0.2,
+                    0.5
+                ]
+            ],
+            "self_illumination_boost": 20.0,
+            "fire_colors_path": "./assets/fire_colors.npy"
+        },
+        "arr": [
+            {
+                "name": "fire_field",
+                "path": "./assets/fire.npy",
+                "data_type": "temperature",
+                "start_pos": [
+                    0,
+                    1,
+                    0
+                ],
+                "size": [
+                    1,
+                    2,
+                    1
+                ],
+                "dimension": [
+                    128,
+                    256,
+                    128
+                ],
+                "scatter": [
+                    0.06,
+                    0.06,
+                    0.06
+                ],
+                "absorption": [
+                    3.8,
+                    3.8,
+                    3.8
+                ]
+            },
+            {
+                "name": "smoke_field",
+                "path": "./assets/smoke.npy",
+                "data_type": "concentration",
+                "start_pos": [
+                    0,
+                    1,
+                    0
+                ],
+                "size": [
+                    1,
+                    2,
+                    1
+                ],
+                "dimension": [
+                    128,
+                    256,
+                    128
+                ],
+                "scatter": [
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                "absorption": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        ]
+    },
+    "shader_directory": "build/shaders",
+    "meshes": [
+        {
+            "name": "terrain",
+            "type": "obj",
+            "path": "./assets/Terrain.obj"
+        },
+        {
+            "name": "sphere1",
+            "type": "sphere",
+            "pos": [
+                8,
+                4.5,
+                -8.0
+            ],
+            "radius": 2.5,
+            "tessellation": 32
+        },
+        {
+            "name": "cube1",
+            "type": "cube",
+            "pos": [
+                0,
+                0.5,
+                -3.0
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ]
+        },
+        {
+            "name": "cube2",
+            "type": "cube",
+            "pos": [
+                0,
+                -2,
+                0
+            ],
+            "scale": [
+                2,
+                2,
+                2
+            ]
+        },
+        {
+            "name": "plane1",
+            "type": "plane",
+            "pos": [
+                0,
+                -1,
+                0
+            ],
+            "normal": [
+                0,
+                1,
+                0
+            ],
+            "size": [
+                100,
+                100
+            ]
+        },
+        {
+            "name": "plane2",
+            "type": "plane",
+            "pos": [
+                -10.5,
+                0,
+                0
+            ],
+            "normal": [
+                1,
+                0,
+                0
+            ],
+            "size": [
+                100,
+                100
+            ]
+        }
+    ],
+    "materials": [
+        {
+            "name": "sphere",
+            "roughness": 1.0,
+            "metallic": 0.001,
+            "color": [
+                1,
+                1,
+                1
+            ],
+            "color_texture": "default_color",
+            "metallic_texture": "default_metallic",
+            "roughness_texture": "default_roughness",
+            "normal_texture": "default_normal",
+            "ao_texture": "default_ao"
+        },
+        {
+            "name": "cube",
+            "roughness": 0.078,
+            "metallic": 0.95,
+            "color": [
+                1,
+                0.71,
+                0.29
+            ],
+            "color_texture": "default_color",
+            "metallic_texture": "default_metallic",
+            "roughness_texture": "default_roughness",
+            "normal_texture": "default_normal",
+            "ao_texture": "default_ao"
+        },
+        {
+            "name": "plane",
+            "roughness": 0.7,
+            "metallic": 0.01,
+            "color": [
+                0.95,
+                0.93,
+                0.88
+            ],
+            "color_texture": "grass_albedo",
+            "metallic_texture": "default_metallic",
+            "roughness_texture": "default_roughness",
+            "normal_texture": "grass_normal",
+            "ao_texture": "grass_ao"
+        },
+        {
+            "name": "terrain",
+            "roughness": 1.0,
+            "metallic": 0.001,
+            "color": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "color_texture": "grass_albedo",
+            "metallic_texture": "default_metallic",
+            "roughness_texture": "default_roughness",
+            "normal_texture": "grass_normal",
+            "ao_texture": "grass_ao"
+        }
+    ],
+    "textures": [
+        {
+            "name": "grass_albedo",
+            "path": "./assets/Textures/bricks_albedo.png"
+        },
+        {
+            "name": "grass_ao",
+            "path": "./assets/Textures/bricks_ao.tif"
+        },
+        {
+            "name": "grass_normal",
+            "path": "./assets/Textures/bricks_normal.tif"
+        }
+    ],
+    "lights": [
+        {
+            "posOrDir": [
+                4.07,
+                7.17,
+                -1.005
+            ],
+            "intensity": [
+                137,
+                137,
+                137
+            ]
+        },
+        {
+            "posOrDir": [
+                -4.07,
+                9.17,
+                1.005
+            ],
+            "intensity": [
+                237,
+                237,
+                237
+            ]
+        }
+    ],
+    "rigid_couple": {
+        "tile_dim": [
+            16,
+            32,
+            16
+        ],
+        "dx": 0.0078125,
+        "grid_origin": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "neg_bc_type": [
+            0,
+            0,
+            0
+        ],
+        "pos_bc_type": [
+            0,
+            0,
+            0
+        ],
+        "neg_bc_val": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "pos_bc_val": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "use_maccormac": true,
+        "poisson_is_uniform": false,
+        "rigid": {
+            "use_rigid": false
+        },
+        "emitter": {
+            "use_emitter": true,
+            "tile_dim": [
+                16,
+                32,
+                16
+            ],
+            "dx": 0.0078125,
+            "grid_origin": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "phi_path": "./assets/plume/emitter.npy",
+            "thickness": 0.015625,
+            "temperature_coef": 25.0,
+            "buoyancy_coef": 1.0
+        }
+    },
+    "driver": {
+        "total_frame": -1,
+        "frame_rate": 25,
+        "steps_per_frame": 4
+    },
+    "recorder": {
+        "output_path": "./temp/output.mp4",
+        "bit_rate": 4000000,
+        "frame_rate": 24,
+        "record_from_start": false
+    }
+}
